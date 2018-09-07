@@ -12,14 +12,14 @@
 #include <PubSubClient.h>
 #include "SoftwareSerial.h"
 
-#define WIFI_AP "Patrick_RD_Studio"
-#define WIFI_PASSWORD "0790132230"
+#define WIFI_AP "yourAP"  //AP SSID
+#define WIFI_PASSWORD "yourpassword"  //WIFI Password
 
-#define TOKEN "Arduino_Demo"
+#define TOKEN "yourdevicetoken"   //Thingsboard Device Token, Get from Dashboard aka (localhost:8080)
 
 // DHT
-#define DHTPIN 4
-#define DHTTYPE DHT11
+#define DHTPIN 4  //Digital pin on Arduino
+#define DHTTYPE DHT11  //Temp,Hum sensor type
 
 //Initialize Analog Pin
 int analogPin = 0;
@@ -58,7 +58,7 @@ void setup() {
   client.setServer( thingsboardServer, 1883 );
   lastSend = 0;
 
-  //Emon Stuff
+  //Emon Stuff - Callibrated for 100Amp non invasive current clamp
    emon1.current(0, 60.6);  //pin for current measurement, calibration value
   
 }
@@ -129,7 +129,7 @@ void getAndSendTemperatureAndHumidityData()
   Serial.print(t);
   Serial.print(" *C ");
   Serial.print("Watts: ");
-  Serial.print(Irms*247.0);
+  Serial.print(Irms*247.0); // Measured local 220-250vac
   Serial.print(" W ");
   Serial.print("Current: ");
   Serial.print(Irms);
@@ -138,7 +138,7 @@ void getAndSendTemperatureAndHumidityData()
   String temperature = String(t);
   String humidity = String(h);
   String current = String(Irms);
-  String watts = String (Irms*247.0);
+  String watts = String (Irms*247.0); // Measured local 220-250vac
 
   // Just debug messages
   Serial.print( "Sending temp, humidity, Current and Watts : [" );
