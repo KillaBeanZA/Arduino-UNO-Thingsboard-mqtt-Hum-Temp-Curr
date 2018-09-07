@@ -3,8 +3,11 @@
 Arduino Uno;
 USB Powered
 DTH11 - Humidity Temp
+
 SCT-013-100 - 100Amp non invasive current clamp
-Orange orange Black - Burden Resistor-33 Ohm
+
+Burden Resistor-33 Ohm
+
 Esp8266 - ESP-01-S
 
 Thingsboard = Local Raspberry Pi
